@@ -1,0 +1,4 @@
+.nav-link-about.active {
+  color: rgb(255, 0, 0);
+  font-weight: bold;
+}
