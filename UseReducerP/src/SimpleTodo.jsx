@@ -1,3 +1,5 @@
+// with use only useReducer
+
 import { useReducer } from "react";
 
 const initialState = {
@@ -11,7 +13,11 @@ function reducer(state , action){
             return {...state, text: action.payload};
 
             case "add" : 
-            if(!state.text.trim()) return state;
+            if (!state.text.trim()) {
+              alert("Please write something!");
+              return state;
+            }
+            
             return {
                 ...state,
                 todos:[...state.todos , {id : Date.now() , text: state.text}],
@@ -60,7 +66,7 @@ export default function SimpleTodo() {
 
 
 
-
+// With use UseReducer and UseState
 
 
 // import { useReducer, useState } from "react";

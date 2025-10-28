@@ -1,11 +1,11 @@
-import SimpleTodo from "./SimpleTodo"
+import AdvanceTodo from "./AdvanceTodo"
 
 function App() {
  
 
   return (
     <>
-    < SimpleTodo/>
+    < AdvanceTodo/>
     </>
   )
 }
