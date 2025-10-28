@@ -31,14 +31,13 @@ function reducer(state,action){
             }; 
 
             case "edit":
-                const todoToEdit = state.todos.find(
-                    (todo) => todo.id === action.payload
-                );
+                { const todoToEdit = state.todos.find(
+                    (todo) => todo.id === action.payload)
                  return {
                     ...state,
                     text: todoToEdit.text,
                     editingId: todoToEdit.id
-                 };
+                 }; }
 
 
                 case "save":
