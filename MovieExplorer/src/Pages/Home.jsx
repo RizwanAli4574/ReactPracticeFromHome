@@ -13,7 +13,7 @@ function Home() {
 
       const res = await fetch(`http://www.omdbapi.com/?apikey=82b49dd0&s=${query}`)
       const data = await res.json();
-      console.log(data);
+     
 
       setMovies(data.Search || [])
 
