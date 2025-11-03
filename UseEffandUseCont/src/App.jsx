@@ -1,11 +1,11 @@
-import MainPage from "./MainPage"
+// import AutoSaveForm from "./UseEffectEvent"
 
 function App() {
   
 
   return (
     <>
-      <MainPage/>
+      {/* <AutoSaveForm/> */}
   
     </>
   )
