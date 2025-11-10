@@ -1,5 +1,7 @@
 import ThemeButton from './ThemeButton'
 
-export function ToolBar(){
+ function ToolBar(){
  return <ThemeButton />
 }
+
+export default ToolBar

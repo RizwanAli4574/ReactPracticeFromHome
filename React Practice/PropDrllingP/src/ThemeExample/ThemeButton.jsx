@@ -3,7 +3,7 @@ import ThemeContext from "./ThemeContext"
 
 
 
-export function ThemeButton(){
+ function ThemeButton(){
    const {theme , setTheme} = useContext(ThemeContext)
  return (
   <>
@@ -20,3 +20,5 @@ export function ThemeButton(){
   </>
  )
 }
+
+export default ThemeButton

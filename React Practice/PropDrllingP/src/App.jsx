@@ -1,20 +1,47 @@
-import { useState } from "react";
-import { ToolBar } from "./ThemeExample/ToolBar";
-import ThemeContext from "./ThemeExample/ThemeContext";
+import NavBar from "./auth-example/Navbar";
+import {AuthProvider} from "./auth-example/AuthContext";
 
 function App() {
- 
-  const [theme , setTheme] = useState("light");
+
   return (
     <>
-    <ThemeContext.Provider value={{theme , setTheme}}>
-       <ToolBar />
-    </ThemeContext.Provider>
-     
+      <AuthProvider>
+        <NavBar />
+      </AuthProvider>
     </>
   )
 }
+
 export default App
+
+
+
+
+
+
+
+
+
+
+
+
+// import { useState } from "react";
+// import  ToolBar  from "./ThemeExample/ToolBar";
+// import ThemeContext from "./ThemeExample/ThemeContext";
+
+// function App() {
+ 
+//   const [theme , setTheme] = useState("light");
+//   return (
+//     <>
+//     <ThemeContext.Provider value={{theme , setTheme}}>
+//        <ToolBar />
+//     </ThemeContext.Provider>
+     
+//     </>
+//   )
+// }
+// export default App
 
 
 
