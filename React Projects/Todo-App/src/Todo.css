@@ -1,4 +1,3 @@
-/* 🎯 General Page Styling */
 body {
   font-family: 'Poppins', sans-serif;
   background: linear-gradient(135deg, #74ebd5, #9face6);
@@ -10,7 +9,7 @@ body {
   margin: 0;
 }
 
-/* 📝 Todo Container */
+
 .todo-container {
   background: white;
   width: 400px;
@@ -21,7 +20,7 @@ body {
 }
 
 
-/* ✨ Heading */
+
 .todo-container h1 {
   text-align: center;
   color: #333;
@@ -30,7 +29,7 @@ body {
   letter-spacing: 1px;
 }
 
-/* 📥 Input and Button */
+
 form {
   display: flex;
   justify-content: space-between;
@@ -68,7 +67,7 @@ button[type="submit"]:hover {
   background: #58c5b9;
 }
 
-/* 📋 Todo List */
+
 ul {
   list-style: none;
   padding: 0;
@@ -90,7 +89,7 @@ li:hover {
   background: #f0f0f0;
 }
 
-/* ✅ Completed Task */
+
 .completed {
   text-decoration: line-through;
   color: gray;
@@ -98,7 +97,7 @@ li:hover {
   cursor: pointer;
 }
 
-/* ❌ Delete Button */
+
 li button {
   background: #ff6b6b;
   border: none;
