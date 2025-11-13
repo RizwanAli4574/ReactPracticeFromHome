@@ -1,4 +1,4 @@
-import ProductCart from "./ProdectCart";
+import ProductCart from "./ProdectCart.jsx";
 
 const products = [
   { id: 1, name: "Laptop", price: 800 },

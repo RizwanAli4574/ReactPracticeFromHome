@@ -1,4 +1,4 @@
-import ProductList from "../Components/ProdectList"
+import ProductList from "../Components/ProdectList.jsx"
 
 
 export default function Home(){

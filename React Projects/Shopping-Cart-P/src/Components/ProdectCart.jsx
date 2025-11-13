@@ -1,4 +1,4 @@
-import { useCart } from "../Context/CartContext";
+import { useCart } from "../Context/CartContext.jsx";
 
 
 

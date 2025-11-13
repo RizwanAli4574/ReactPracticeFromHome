@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
-import Home from "./Pages/Home";
-import CartPage from "./Pages/CartPage";
-import  {CartProvider, useCart } from "./Context/CartContext";
+import Home from "./Pages/Home.jsx";
+import CartPage from "./Pages/CartPage.jsx";
+import  {CartProvider, useCart } from "./Context/CartContext.jsx";
 
 function Navbar() {
   const { cart } = useCart();
