@@ -1,39 +1,21 @@
 import { createContext, useContext, useState } from "react";
-import { useRef } from "react";
 import { toast } from "react-toastify";
 
 const CartContext = createContext();
 
 export function CartProvider({ children }) {
-  const toastRun = useRef(false);
   const [cart, setCart] = useState([]);
 
   const addToCart = (product) => {
-    setCart((prev) => {
-      const existing = prev.find((item) => item.id === product.id);
+    const existing = cart.find((item) => item.id === product.id);
 
-      if (!toastRun.current) {
-        if (existing) {
-          toast.info(`${product.name} Already Added`);
-        } else {
-          toast.success(`Added ${product.name} Successfully`);
-        }
-      }
+    if (existing) {
+      toast.info(`${product.name} Already Added`);
+      return; 
+    }
 
-      toastRun.current = true;
-
-      if (existing) {
-        return prev.map((item) =>
-          item.id === product.id ? { ...item, qty: item.qty + 1 } : item
-        );
-      }
-
-      return [...prev, { ...product, qty: 1 }];
-    });
-
-    setTimeout(() => {
-      toastRun.current = false;
-    }, 200);
+    setCart((prev) => [...prev, { ...product, qty: 1 }]);
+    toast.success(`Added ${product.name} Successfully`);
   };
 
   const removeProduct = (id) => {
