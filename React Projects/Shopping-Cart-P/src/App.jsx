@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
 import Home from "./Pages/Home.jsx";
 import CartPage from "./Pages/CartPage.jsx";
 import  {CartProvider, useCart } from "./Context/CartContext.jsx";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Navbar() {
   const { cart } = useCart();
@@ -30,6 +32,7 @@ function App() {
     <CartProvider>
       <BrowserRouter>
         <Navbar />
+          <ToastContainer position="top-center" autoClose={1500} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<CartPage />} />
