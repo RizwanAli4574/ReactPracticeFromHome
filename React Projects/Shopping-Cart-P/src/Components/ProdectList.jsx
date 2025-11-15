@@ -20,7 +20,7 @@ export default function ProductList() {
   return (
     <div className="row">
       {products.map((p) => (
-        <div key={p.id} className="col-lg-4 col-md-6 col-sm-6 col-12  mb-4 product-card">
+        <div key={p.id} className="col-lg-3 col-md-6 col-sm-6 col-12  mb-4 product-card">
           <ProductCart 
            product={p}
           />

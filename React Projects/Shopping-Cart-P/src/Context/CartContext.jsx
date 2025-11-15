@@ -15,11 +15,13 @@ export function CartProvider({children}) {
               return prev.map( (item) => item.id === product.id ?  {...item , qty: item.qty + 1}  : item)
             } return [...prev , {...product , qty: 1}]
         })
+        alert(`Add ${product.name} Successfully`)
    }
   
 
   const removeProduct = (id) => {
     setCart( (prev) => prev.filter( (item) => item.id !== id))
+    
   }
 
 
