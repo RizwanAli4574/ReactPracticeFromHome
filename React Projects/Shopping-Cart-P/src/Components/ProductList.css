@@ -1,0 +1,11 @@
+.fit{
+    height: 280px;
+    width: 100%;
+}
+
+@media (max-width: 576px) and (min-width: 390px) {
+  .product-card {
+    max-width: 370px;  
+    margin: auto;     
+  }
+}

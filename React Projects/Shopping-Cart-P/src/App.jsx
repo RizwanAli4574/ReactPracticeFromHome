@@ -7,7 +7,7 @@ function Navbar() {
   const { cart } = useCart();
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-secondary">
       <div className="container">
         <NavLink className="navbar-brand fw-bold" to="/">
           🛒 MyShop

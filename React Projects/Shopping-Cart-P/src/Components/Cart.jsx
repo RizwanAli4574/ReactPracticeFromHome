@@ -5,10 +5,10 @@ function Cart() {
 
   return (
     <div className="container">
-      <h2 className="mb-3">Your Cart</h2>
+      <h2 className="mb-3 text-center">Your Cart</h2>
 
       {cart.length === 0 ? (
-        <div className="alert alert-info">No item in cart</div>
+        <div className="alert alert-info text-center">No item in cart</div>
       ) : (
         <>
           <table className="table table-bordered align-middle">
