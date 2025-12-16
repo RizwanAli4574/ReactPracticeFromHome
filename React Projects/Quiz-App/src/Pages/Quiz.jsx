@@ -1,21 +1,47 @@
+import {  useContext } from "react"
+import { useNavigate } from "react-router-dom"
+import { QuizContext } from "../Context/QuizContext"
+import Progressbar from "../Components/Progressbar"
+import QuestionCard from "../Components/QuestionCard"
+import Timer from "../Components/Timer"
+import useTimer from "../Hooks/useTimer"
 
 
 function Quiz() {
+  const {state , dispatch} = useContext(QuizContext)
+  const {index, Question } = state;
+  const navigate = useNavigate();
+  const {time , reset} = useTimer(10);
+
+  if(!Question  || Question .length === 0) {
+    return <h2 className="text-center mt-5">Loading Question...</h2>
+  }
+
+  if(index >= Question .length){
+    dispatch({type : "FINISH"})
+    navigate("/result")
+    return null;
+  }
+
+  const current = Question[index]
+
+  const handleSelect = (option) => {
+    dispatch({type : "ANSWER" , payload: option === current.answer})
+    reset();
+  }
+
+
   return (
     <div className="container mt-4">
-        <div className="alert alert-info text-center fw-bold">⏳ Time Left: 15s</div>
-        <div className="progress mb-3">
-            <div className="progress-bar" style={{width: "50%"}}>50%</div>
-        </div>
-        <div className="card shadow p-4">
-            <h4 className="fw-semibold">React is mainly used for?</h4>
-            <div className="mt-3">
-                <button className="btn btn-outline-primary w-100 mt-2">Styling</button>
-                <button className="btn btn-outline-primary w-100 mt-2">Mobile Apps</button>
-                <button className="btn btn-outline-primary w-100 mt-2">Building UI</button>
-                <button className="btn btn-outline-primary w-100 mt-2">None</button>
-            </div>
-        </div>
+       <Timer time={time}/>
+       <Progressbar current={index} total={Question .length}/>
+       <QuestionCard 
+        question={current.question}
+        options={current.options}
+        onSelect={handleSelect}
+       />
+       
+       
     </div>
   )
 }
