@@ -1,4 +1,4 @@
-import {  useContext } from "react"
+import {useEffect ,   useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { QuizContext } from "../Context/QuizContext"
 import Progressbar from "../Components/Progressbar"
@@ -13,11 +13,18 @@ function Quiz() {
   const navigate = useNavigate();
   const {time , reset} = useTimer(10);
 
-  if(!Question  || Question .length === 0) {
+  useEffect( () => {
+    if(time === 0 ) {
+      dispatch({type: "ANSWER" , payload: false})
+      reset()
+    }
+  },[time])
+
+  if(!Question  || Question.length === 0) {
     return <h2 className="text-center mt-5">Loading Question...</h2>
   }
 
-  if(index >= Question .length){
+  if(index >= Question.length){
     dispatch({type : "FINISH"})
     navigate("/result")
     return null;

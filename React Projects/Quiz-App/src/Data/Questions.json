@@ -1,24 +1,112 @@
 [
-    {
-        "id": 1,
-        "question": "React is mainly used for?",
-        "options": [
-            "Styling",
-            "Mobile Apps",
-            "Building UI",
-            "None"
-        ],
-        "answer": "Building UI"
-    },
-    {
-        "id": 2,
-        "question": "Which hook is used for state?",
-        "options": [
-            "useEffect",
-            "useState",
-            "useMemo",
-            "useContext"
-        ],
-        "answer": "useState"
-    }
+  {
+    "id": 1,
+    "question": "React is mainly used for?",
+    "options": [
+      "Styling web pages",
+      "Building UI",
+      "Database management",
+      "Server-side scripting"
+    ],
+    "answer": "Building UI"
+  },
+  {
+    "id": 2,
+    "question": "Which hook is used to manage state in React?",
+    "options": [
+      "useEffect",
+      "useState",
+      "useContext",
+      "useRef"
+    ],
+    "answer": "useState"
+  },
+  {
+    "id": 3,
+    "question": "What is JSX in React?",
+    "options": [
+      "A database",
+      "A CSS framework",
+      "JavaScript XML",
+      "A React hook"
+    ],
+    "answer": "JavaScript XML"
+  },
+  {
+    "id": 4,
+    "question": "Which hook is used for side effects?",
+    "options": [
+      "useState",
+      "useMemo",
+      "useEffect",
+      "useReducer"
+    ],
+    "answer": "useEffect"
+  },
+  {
+    "id": 5,
+    "question": "What is the correct way to pass data to a component?",
+    "options": [
+      "Using props",
+      "Using state only",
+      "Using CSS",
+      "Using HTML attributes"
+    ],
+    "answer": "Using props"
+  },
+  {
+    "id": 6,
+    "question": "Which hook is used to access context?",
+    "options": [
+      "useEffect",
+      "useState",
+      "useContext",
+      "useCallback"
+    ],
+    "answer": "useContext"
+  },
+  {
+    "id": 7,
+    "question": "React components must start with?",
+    "options": [
+      "Lowercase letter",
+      "Number",
+      "Uppercase letter",
+      "Special character"
+    ],
+    "answer": "Uppercase letter"
+  },
+  {
+    "id": 8,
+    "question": "Which method is used to render React app to DOM?",
+    "options": [
+      "render()",
+      "ReactDOM.render()",
+      "mount()",
+      "show()"
+    ],
+    "answer": "ReactDOM.render()"
+  },
+  {
+    "id": 9,
+    "question": "What is useReducer mainly used for?",
+    "options": [
+      "Simple state",
+      "Complex state logic",
+      "Styling components",
+      "Routing"
+    ],
+    "answer": "Complex state logic"
+  },
+  {
+    "id": 10,
+    "question": "Which library is commonly used for routing in React?",
+    "options": [
+      "Redux",
+      "Axios",
+      "React Router",
+      "Formik"
+    ],
+    "answer": "React Router"
+  }
 ]

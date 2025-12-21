@@ -11,6 +11,7 @@ const navigate = useNavigate()
 
 const startQuiz = () => {
   if(!name.trim()) return alert("Please enter your name")
+     dispatch({ type: "RESET" });  
     dispatch({type: "SET_NAME" , payload: name})
     navigate("/quiz")
 }
