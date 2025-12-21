@@ -11,7 +11,7 @@ function Quiz() {
   const {state , dispatch} = useContext(QuizContext)
   const {index, Question } = state;
   const navigate = useNavigate();
-  const {time , reset} = useTimer(10);
+  const {time , reset} = useTimer(15);
 
   useEffect( () => {
     if(time === 0 ) {
@@ -41,8 +41,9 @@ function Quiz() {
   return (
     <div className="container mt-4">
        <Timer time={time}/>
-       <Progressbar current={index} total={Question .length}/>
+       <Progressbar current={index} total={Question.length}/>
        <QuestionCard 
+       key={index}
         question={current.question}
         options={current.options}
         onSelect={handleSelect}
