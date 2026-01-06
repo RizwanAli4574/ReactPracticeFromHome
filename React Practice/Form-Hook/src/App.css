@@ -1,9 +1,133 @@
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-.error{
-    color: red;
-    margin: 1px 0 3px;
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #333;
+}
+
+/* Form Container */
+div {
+  width: 100%;
+  padding: 10px; /* Reduced outer padding */
+}
+
+form {
+  background: rgba(255, 255, 255, 0.95);
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 25px; /* Reduced from 40px */
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px; /* Reduced gap */
+}
+
+/* Form Control Wrapper */
+.form-control {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Headings & Labels */
+label {
+  display: block;
+  margin-bottom: 4px; /* Reduced margin */
+  font-weight: 500;
+  color: #4a4a4a;
+  font-size: 0.85rem; /* Slightly smaller font */
+}
+
+/* Inputs */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+input[type="number2"] { 
+  width: 100%;
+  padding: 8px 12px; /* Compact padding */
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: border-color 0.3s ease;
+  font-family: inherit;
+}
+
+input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+/* Error Messages */
+.error {
+  color: #ff4757;
+  font-size: 0.75rem;
+  margin-top: 2px;
+  display: block;
+  min-height: 18px; 
+}
+
+/* Breaks handling */
+br {
+  display: none;
+}
+
+/* Button */
+button[type="sumbit"] {
+  grid-column: span 2;
+  width: 40%; /* Slightly smaller width */
+  margin: 10px auto 0; /* Reduced margin */
+  padding: 10px; /* Reduced padding */
+  background: linear-gradient(to right, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button[type="sumbit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(118, 75, 162, 0.4);
+}
+
+button[type="sumbit"]:active {
+  transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  form {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    gap: 10px;
+  }
+  
+  button[type="sumbit"] {
+    grid-column: span 1;
+    width: 100%;
+  }
+}
+/* Ensure it fits on small height screens */
+@media (max-height: 700px) {
+  body {
+    align-items: flex-start; /* Allow scroll if literally too small */
+    padding-top: 20px;
+  }
+  form {
+    padding: 20px;
+  }
 }
