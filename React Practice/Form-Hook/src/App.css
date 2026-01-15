@@ -116,8 +116,8 @@ button[type="sumbit"]:active {
     gap: 10px;
   }
   
-  button[type="sumbit"] {
-    grid-column: span 1;
+  button[type="sumbit"], button[type="button"] {
+    grid-column: span 2;
     width: 100%;
   }
 }

@@ -1,8 +1,10 @@
 import { useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
+import { useEffect } from "react";
 
 function Form() {
-  const { register, handleSubmit, control, formState } = useForm({
+  const { register, handleSubmit, control, 
+    formState, watch , getValues , setValue } = useForm({
     defaultValues: {
       name: "",
       email: "",
@@ -14,21 +16,47 @@ function Form() {
       dob: new Date()
     },
   });
-  const { errors } = formState;
+  const { errors , dirtyFields , 
+    touchedFields,isDirty , isValid, isSubmitting} = formState;
+// console.log({dirtyFields , touchedFields , isDirty})
 
   const onSubmit = (data) => {
     console.log(data);
   };
 
+  // const watchForm = watch();
+
+  // useEffect(() => {
+  //   console.log(watchForm);
+  // }, [watchForm]);
+
+  const getFormValues = () => {
+    const values = getValues();
+    console.log(values); 
+  };
+
+  const setFormValues = () => {
+    setValue("name", "John Doe",{
+      shouldValidate: true,
+      shouldDirty: true,
+      shouldTouch: true,
+    });
+  };
+const onError = (errors) => {
+  console.log(errors);
+}
+
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      {/* <p>Json: {JSON.stringify(watchForm)}</p> */}
+      <form onSubmit={handleSubmit(onSubmit, onError)}>
         <div className="form-control">
           <label htmlFor="name">Name</label>
           <input
             type="text"
             id="name"
             {...register("name", {
+              
               required: "Name is required",
             })}
           />
@@ -41,6 +69,7 @@ function Form() {
             type="email"
             id="email"
             {...register("email", {
+              disabled: watch("name") === "",
               required: "Email is required",
               pattern: {
                 value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
@@ -164,7 +193,9 @@ function Form() {
           <input type="number2" id="number2" {...register("phoneNumbers.1")} />
         </div>
 
-        <button type="sumbit">Submit</button>
+        {/* <button type="sumbit" disabled={!isValid}>Submit</button> */}
+        <button type="sumbit" disabled={!isValid}>Submit</button>
+        <button type="button" onClick={setFormValues}>Get Form Values</button>
       </form>
       <DevTool control={control} placement="top-left" />
     </div>
