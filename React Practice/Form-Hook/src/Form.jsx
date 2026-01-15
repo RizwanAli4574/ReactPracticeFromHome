@@ -80,6 +80,57 @@ function Form() {
           <p className="error">{errors.age?.message}</p>
         </div>
 
+         <div className="form-control">
+         <label htmlFor="country">Country</label> 
+         <select  id="country" {...register("country")}> 
+            <option value="">Select Country</option>
+            <option value="pakistan">PAKISTAN</option>
+            <option value="canada">Canada</option>
+            <option value="uk">UK</option>
+            <option value="australia">Australia</option>
+            <option value="india">India</option>
+         </select>
+        </div>
+
+        <div>
+          <label htmlFor="gender">Gender</label>
+          <label htmlFor="gender">
+            <input type="radio"  value="male" {...register("gender", {required: "Gender is required"})} />
+            <label htmlFor="gender">Male</label>
+          </label>
+      
+          <label htmlFor="gender">
+            <input type="radio"  value="female" {...register("gender")} />
+            <label htmlFor="gender">Female</label>
+          </label>
+            <p className="error">{errors.gender?.message}</p>
+        </div>
+
+          <div>
+          <label htmlFor="skills">Skills</label>
+          <label htmlFor="skills">
+            <input type="checkbox"  value="word" {...register("skills", {required: "Skills is required"})} />
+            <label htmlFor="skills">Word</label>
+          </label>
+
+           <label htmlFor="skills">
+            <input type="checkbox"  value="excel" {...register("skills", {required: "Skills is required"})} />
+            <label htmlFor="skills">Excel</label>
+          </label>
+
+          <label htmlFor="skills">
+            <input type="checkbox"  value="powerpoint" {...register("skills", {required: "Skills is required"})} />
+            <label htmlFor="skills">PowerPoint</label>
+          </label>
+
+          <label htmlFor="skills">
+            <input type="checkbox"  value="outlook" {...register("skills", {required: "Skills is required"})} />
+            <label htmlFor="skills">Outlook</label>
+          </label>
+
+            <p className="error">{errors.skills?.message}</p>
+        </div>
+
         <div className="form-control">
           <label htmlFor="dob">DOB</label>
           <input
