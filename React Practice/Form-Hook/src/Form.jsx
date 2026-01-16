@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 function Form() {
   const { register, handleSubmit, control, 
-    formState, watch , getValues , setValue } = useForm({
+    formState, watch  , reset} = useForm({
     defaultValues: {
       name: "",
       email: "",
@@ -16,39 +16,27 @@ function Form() {
       dob: new Date()
     },
   });
-  const { errors , dirtyFields , 
-    touchedFields,isDirty , isValid, isSubmitting} = formState;
-// console.log({dirtyFields , touchedFields , isDirty})
+  const { errors ,isSubmitSuccessful , submitCount} = formState;
+
+
+
 
   const onSubmit = (data) => {
-    console.log(data);
-  };
+    console.log("Form Data Submitted:", data);
+  }
 
-  // const watchForm = watch();
+  const onError = (errors) => {
+    console.log("Form Errors:", errors);
+  }
 
-  // useEffect(() => {
-  //   console.log(watchForm);
-  // }, [watchForm]);
-
-  const getFormValues = () => {
-    const values = getValues();
-    console.log(values); 
-  };
-
-  const setFormValues = () => {
-    setValue("name", "John Doe",{
-      shouldValidate: true,
-      shouldDirty: true,
-      shouldTouch: true,
-    });
-  };
-const onError = (errors) => {
-  console.log(errors);
-}
+ useEffect(() => {
+    if(isSubmitSuccessful){
+      reset();
+    }
+  }, [isSubmitSuccessful]);
 
   return (
     <div>
-      {/* <p>Json: {JSON.stringify(watchForm)}</p> */}
       <form onSubmit={handleSubmit(onSubmit, onError)}>
         <div className="form-control">
           <label htmlFor="name">Name</label>
@@ -69,7 +57,6 @@ const onError = (errors) => {
             type="email"
             id="email"
             {...register("email", {
-              disabled: watch("name") === "",
               required: "Email is required",
               pattern: {
                 value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
@@ -121,42 +108,45 @@ const onError = (errors) => {
          </select>
         </div>
 
-        <div>
+        <div className="form-control">
           <label htmlFor="gender">Gender</label>
-          <label htmlFor="gender">
-            <input type="radio"  value="male" {...register("gender", {required: "Gender is required"})} />
-            <label htmlFor="gender">Male</label>
-          </label>
+          <div className="radio-group">
+            <label htmlFor="gender-male">
+              <input type="radio" id="gender-male" value="male" {...register("gender", {required: "Gender is required"})} />
+              <span>Male</span>
+            </label>
       
-          <label htmlFor="gender">
-            <input type="radio"  value="female" {...register("gender")} />
-            <label htmlFor="gender">Female</label>
-          </label>
-            <p className="error">{errors.gender?.message}</p>
+            <label htmlFor="gender-female">
+              <input type="radio" id="gender-female" value="female" {...register("gender")} />
+              <span>Female</span>
+            </label>
+          </div>
+          <p className="error">{errors.gender?.message}</p>
         </div>
 
-          <div>
+          <div className="form-control">
           <label htmlFor="skills">Skills</label>
-          <label htmlFor="skills">
-            <input type="checkbox"  value="word" {...register("skills", {required: "Skills is required"})} />
-            <label htmlFor="skills">Word</label>
-          </label>
+          <div className="checkbox-group">
+            <label>
+              <input type="checkbox" value="word" {...register("skills", {required: "Skills is required"})} />
+              <span>Word</span>
+            </label>
 
-           <label htmlFor="skills">
-            <input type="checkbox"  value="excel" {...register("skills", {required: "Skills is required"})} />
-            <label htmlFor="skills">Excel</label>
-          </label>
+            <label>
+              <input type="checkbox" value="excel" {...register("skills", {required: "Skills is required"})} />
+              <span>Excel</span>
+            </label>
 
-          <label htmlFor="skills">
-            <input type="checkbox"  value="powerpoint" {...register("skills", {required: "Skills is required"})} />
-            <label htmlFor="skills">PowerPoint</label>
-          </label>
+            <label>
+              <input type="checkbox" value="powerpoint" {...register("skills", {required: "Skills is required"})} />
+              <span>PowerPoint</span>
+            </label>
 
-          <label htmlFor="skills">
-            <input type="checkbox"  value="outlook" {...register("skills", {required: "Skills is required"})} />
-            <label htmlFor="skills">Outlook</label>
-          </label>
-
+            <label>
+              <input type="checkbox" value="outlook" {...register("skills", {required: "Skills is required"})} />
+              <span>Outlook</span>
+            </label>
+          </div>
             <p className="error">{errors.skills?.message}</p>
         </div>
 
@@ -193,9 +183,11 @@ const onError = (errors) => {
           <input type="number2" id="number2" {...register("phoneNumbers.1")} />
         </div>
 
-        {/* <button type="sumbit" disabled={!isValid}>Submit</button> */}
-        <button type="sumbit" disabled={!isValid}>Submit</button>
-        <button type="button" onClick={setFormValues}>Get Form Values</button>
+        
+        <button type="submit">Submit</button>
+        <br/>
+        <button type="button" onClick={() => reset()}>Reset</button>
+       
       </form>
       <DevTool control={control} placement="top-left" />
     </div>
