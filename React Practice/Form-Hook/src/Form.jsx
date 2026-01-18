@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 function Form() {
   const { register, handleSubmit, control, 
-    formState, watch  , reset} = useForm({
+    formState, watch  , reset,trigger} = useForm({
     defaultValues: {
       name: "",
       email: "",
@@ -15,6 +15,7 @@ function Form() {
       phoneNumbers:["" , ""],
       dob: new Date()
     },
+    mode: "onBlur"
   });
   const { errors ,isSubmitSuccessful , submitCount} = formState;
 
@@ -174,22 +175,19 @@ function Form() {
         </div>
 
         <div className="form-control">
-          <label htmlFor="number">Primary Number</label>
+          <label htmlFor="number">Number</label>
           <input type="number" id="number" {...register("phoneNumbers.0")} />
         </div>
 
-        <div className="form-control">
-          <label htmlFor="number2">Secondary Number</label>
-          <input type="number2" id="number2" {...register("phoneNumbers.1")} />
-        </div>
-
+  
         
         <button type="submit">Submit</button>
         <br/>
         <button type="button" onClick={() => reset()}>Reset</button>
+        {/* <button type="button" onClick={() => trigger()}>Trigger</button> */}
        
       </form>
-      <DevTool control={control} placement="top-left" />
+      {/* <DevTool control={control} placement="top-left" /> */}
     </div>
   );
 }
