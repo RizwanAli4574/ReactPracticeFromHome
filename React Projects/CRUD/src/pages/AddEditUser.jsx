@@ -1,7 +1,7 @@
 
 
 function AddEditUser() {
-  return <div>AddEditUser</div>;
+  return <div>Add Edit User</div>;
 }
 
 export default AddEditUser;

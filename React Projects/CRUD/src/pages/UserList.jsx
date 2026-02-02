@@ -1,18 +1,93 @@
-import { useEffect , useState} from "react";
+import { useEffect, useState } from "react";
 import api from "../api/axios";
+import { useNavigate } from "react-router-dom";
+import { DataTable } from "primereact/datatable";
+import { Column } from "primereact/column";
+import { Button } from "primereact/button";
+
 function UserList() {
-    const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState([]);
+  const navigate = useNavigate();
 
+  const fetchUsers = async () => {
+    const response = await api.get("/users");
+    console.log(response.data);
+    setUsers(response.data);
+  };
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    fetchUsers();
+  }, []);
 
-    const fetchUsers = async () => {
-        const response = await api.get("/users");
-        console.log(response.data);
-        setUsers(response.data);
-    }
-    useEffect(() => {
-        fetchUsers();
-    }, []);
-  return <h1>Users CRUD</h1>;
+  const actionTemplate = (rowData) => (
+    <>
+      <Button
+        icon="pi pi-pencil"
+        className="p-button-warning p-button-sm mr-2"
+        onClick={() => navigate(`/edit/${rowData.id}`)}
+      />
+      <Button
+        icon="pi pi-trash"
+        className="p-button-danger p-button-sm"
+        // onClick={() => {}}
+      />
+    </>
+  );
+
+  return (
+    <div>
+      <div className="flex justify-content-end mb-2">
+        <Button
+          label="Add User"
+          icon="pi pi-user-plus"
+          size="small"
+          className="p-button-success"
+          onClick={() => navigate("/add")}
+        />
+      </div>
+      <DataTable
+        value={users}
+        showGridlines
+        stripedRows
+        paginator
+        rows={5}
+        size="small"
+        filterDisplay="row"
+      >
+        <Column
+          filter
+          filterPlaceholder="Search"
+          field="name"
+          header="Name"
+          sortable
+        ></Column>
+        <Column
+          filter
+          filterPlaceholder="Search"
+          field="username"
+          header="UserName"
+          sortable
+        ></Column>
+        <Column
+          filter
+          filterPlaceholder="Search"
+          field="age"
+          header="Age"
+          sortable
+        ></Column>
+        <Column
+          filter
+          filterPlaceholder="Search"
+          field="email"
+          header="Email"
+          sortable
+        ></Column>
+        <Column header="Action"
+        body={actionTemplate}
+        style={{ width: "13%" }}></Column>
+      </DataTable>
+    </div>
+  );
 }
 
 export default UserList;
