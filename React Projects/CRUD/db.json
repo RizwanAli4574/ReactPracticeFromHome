@@ -1,53 +1,46 @@
 {
   "users": [
     {
+      "name": "Norman Moran",
+      "username": "danec",
+      "email": "dumyzowuj@mailinator.com",
+      "age": 30,
+      "id": "e3c4"
+    },
+    {
+      "id": "8eec",
+      "name": "Judith Monroe",
+      "username": "lovupybej",
+      "email": "guda@mailinator.com",
+      "age": 22
+    },
+    {
       "id": "1",
-      "name": "Rizwan",
+      "name": "Rizwan Ali",
       "username": "rizwan123",
       "email": "rizwan@gmail.com",
       "age": 25
     },
     {
-      "id": "2",
-      "name": "Waqar",
-      "username": "waqar123",
-      "email": "waqar@gmail.com",
-      "age": 35
-    },
-    {
-      "id": "3",
-      "name": "Shahzaib",
-      "username": "shahzaib123",
-      "email": "shahzaib@gmail.com",
-      "age": 26
-    },
-    {
-      "id": "4",
-      "name": "Shuaib",
-      "username": "shuaib123",
-      "email": "shuaib@gmail.com",
-      "age": 30
-    },
-    {
-      "id": "5",
-      "name": "Ramzan",
-      "username": "ramzan123",
-      "email": "ramzan@gmail.com",
-      "age": 28
-    },
-    {
-      "id": "85a5",
-      "name": "Amaya Harper",
-      "username": "vivurogox",
-      "email": "pixusubugu@mailinator.com",
+      "id": "ed3e",
+      "name": "Jonas Holcomb",
+      "username": "fojybaze",
+      "email": "tymucom@mailinator.com",
       "age": 22
     },
     {
-      "id": "6979",
-      "name": "Jin Hahn",
-      "username": "kadeny",
-      "email": "qoqujaja@mailinator.com",
-      "age": 22
+      "id": "34bb",
+      "name": "Fuller Barnes",
+      "username": "qakiw",
+      "email": "pihaco@mailinator.com",
+      "age": 50
+    },
+    {
+      "id": "7321",
+      "name": "Catherine Mccarthy",
+      "username": "bysihuku",
+      "email": "wehoqan@mailinator.com",
+      "age": 80
     }
   ]
 }

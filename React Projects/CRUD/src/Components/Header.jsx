@@ -2,15 +2,8 @@
 
 function Header() {
   return (
-    <div className="p-2" 
-    style={{
-        backgroundColor:"var(--indigo-700)",
-        color:"var(--primary-color-text)",
-        borderRadius:"var(--border-radius)",
-        padding:"3rem"
-    }}
-    >
-        <h3>CRUD Application</h3>
+    <div className="flex justify-content-center align-items-center bg-primary-700 text-black border-round-xl p-4 shadow-2 mb-4">
+        <h3 className="m-0 text-xl font-bold">CRUD Application</h3>
     </div>
   )
 }
