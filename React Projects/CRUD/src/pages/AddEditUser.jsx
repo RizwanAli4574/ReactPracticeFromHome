@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-import api from "../api/axios";
+import { usersData, addUser, updateUser } from "./data";
 
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -28,42 +28,35 @@ function AddEditUser({ toast }) {
     resolver: yupResolver(userSchema),
   });
 
-  const onSubmit = async (data) => {
+  const onSubmit = (data) => {
     if (id) {
-      try {
-        await api.put(`/users/${id}`, data);
-        toast.current.show({
-          severity: "success",
-          summary: "Update",
-          detail: "User updated successfully",
-          life: 2000,
-        });
-      } catch (error) {
-        console.log(error);
-      }
+      updateUser(id, data);
+      toast.current.show({
+        severity: "success",
+        summary: "Update",
+        detail: "User updated successfully",
+        life: 2000,
+      });
     } else {
-      try {
-        await api.post("/users", data);
-        toast.current.show({
-          severity: "success",
-          summary: "Added",
-          detail: "User added successfully",
-          life: 2000,
-        });
-      } catch (error) {
-        console.log(error);
-      }
+      addUser(data);
+      toast.current.show({
+        severity: "success",
+        summary: "Added",
+        detail: "User added successfully",
+        life: 2000,
+      });
     }
     navigate("/");
   };
 
   useEffect(() => {
     if (id) {
-      api.get(`/users/${id}`).then((res) => {
-        Object.keys(res.data).forEach((key) => {
-          setValue(key, res.data[key]);
+      const user = usersData.find(u => u.id === id);
+      if (user) {
+        Object.keys(user).forEach((key) => {
+          setValue(key, user[key]);
         });
-      });
+      }
     }
   }, [id, setValue]);
 

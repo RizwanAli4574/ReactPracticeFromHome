@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import api from "../api/axios";
+import { usersData, deleteUserById } from "./data";
 import { useNavigate } from "react-router-dom";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
@@ -11,23 +11,23 @@ function UserList({ toast }) {
   const [users, setUsers] = useState([]);
   const navigate = useNavigate();
 
-  const fetchUsers = async () => {
-    const response = await api.get("/users");
-    setUsers(response.data);
+  const fetchUsers = () => {
+    setUsers([...usersData]);
   };
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchUsers();
   }, []);
+  
 
   const deleteUser = (id) => {
     confirmDialog({
       message: "Are you sure you want to delete this user?",
       header: "Delete Confirmation",
       icon: "pi pi-exclamation-triangle",
-      accept: async () => {
-        await api.delete(`/users/${id}`);
+      accept: () => {
+        deleteUserById(id);
         toast.current.show({
           severity: "success",
           summary: "Delete",
