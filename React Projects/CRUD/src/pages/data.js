@@ -37,17 +37,17 @@ const defaultUsers = [
   
 ];
 
-// Initialize usersData from localStorage, or use default array if empty
+
 const STORAGE_KEY = "crud_users_data";
 const storedData = localStorage.getItem(STORAGE_KEY);
 export let usersData = storedData ? JSON.parse(storedData) : [...defaultUsers];
 
-// Pehli baar load hone pe default data ko localStorage me save kar dein
+
 if (!storedData) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(usersData));
 }
 
-// Helper to save current state
+
 const saveToStorage = () => {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(usersData));
 };
